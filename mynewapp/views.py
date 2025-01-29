@@ -83,7 +83,7 @@ def upload_file(request):
             return JsonResponse({'status': 'error', 'message': 'A file with this name already exists'}, status=400)
 
 @api_view(['POST'])
-@require_auth(None)
+@require_auth("fetch:token")
 def generate_sharable_token(request):
     filename = request.POST.get('filename')
     user_ids = json.loads(request.POST.get('userId', '[]'))  # Get the array of user IDs from the request

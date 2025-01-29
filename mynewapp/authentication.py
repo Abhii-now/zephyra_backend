@@ -9,7 +9,6 @@ from functools import wraps
 from django.http import HttpRequest, JsonResponse
 from typing import Any
 
-
 def authorized(function):
     @wraps(function)
     def wrap(request: HttpRequest, *args, **kwargs):
