@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://localhost:3000",
     # Add other origins as needed
 ]
 
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_extensions',
     'corsheaders',  # Add this line
     'mynewapp',  # Include your app here
 
@@ -108,7 +110,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+# Ensure you have the following settings
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_REFERRER_POLICY = 'same-origin'
 # Internationalization
 # https://docs.djangoproject.com/en/X.X/topics/i18n/
 
